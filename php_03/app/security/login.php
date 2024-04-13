@@ -27,8 +27,6 @@ function validateLogin(&$form,&$messages){
 	if (count ( $messages ) > 0) return false;
 
 	// sprawdzenie, czy dane logowania są poprawne
-	// - takie informacje najczęściej przechowuje się w bazie danych
-	//   jednak na potrzeby przykładu sprawdzamy bezpośrednio
 	if ($form['login'] == "admin" && $form['pass'] == "admin") {
 		session_start();
 		$_SESSION['role'] = 'admin';
