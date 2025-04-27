@@ -1,13 +1,14 @@
 <?php
-define('_SERVER_NAME', 'localhost');
+define('_SERVER_NAME', 'localhost:8000');
 define('_SERVER_URL', 'http://'._SERVER_NAME);
-define('_APP_ROOT', '/php_03');
+define('_APP_ROOT', '');
 define('_APP_URL', _SERVER_URL._APP_ROOT);
 define("_ROOT_PATH", dirname(__FILE__));
+define('SMARTY_DIR', _ROOT_PATH.'/libs/smarty/src/');
 
 function out(&$param){
-	if (isset($param)){
-		echo $param;
-	}
+    if (isset($param)){
+        echo $param;
+    }
 }
 ?>

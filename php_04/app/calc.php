@@ -2,12 +2,16 @@
 // KONTROLER kalkulatora kredytowego
 
 require_once dirname(__FILE__).'/../config.php';
+require_once dirname(__FILE__).'/../autoload.php'; 
+
+require_once SMARTY_DIR.'Smarty.php'; 
 
 //bramkarz
 include dirname(__FILE__).'/security/check.php';
 
 //Smarty
-require_once dirname(__FILE__).'/../libs/smarty/Smarty.class.php';
+//require_once dirname(__FILE__).'/../libs/smarty/Smarty.class.php';
+//stare smarty 4
 
 $kwota = null;
 $lata = null;
@@ -73,21 +77,30 @@ if (empty($messages)) {
 
 $rata = null;
 $hide_intro = false;
+$oprocentowanie_display = $oprocentowanie; // Store original value for display
 
 // 3. wykonaj zadanie jeśli wszystko w porządku
 if (empty($messages)) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $kwota = floatval($kwota);
-        $lata = intval($lata);
-        $oprocentowanie = floatval($oprocentowanie) / 100;
-        $miesiace = $lata * 12;
+        $kwota_calc = floatval($kwota); //uzycie innej zmiennej do kalkulacji by ominąć problemy z procentami
+        $lata_calc = intval($lata);
+        $oprocentowanie_calc = floatval($oprocentowanie) / 100; 
+        $miesiace = $lata_calc * 12;
         $hide_intro = true;
         // Sprawdzenie, czy $miesiace nie jest ujemne
         if ($miesiace < 0) {
             $messages[] = 'Nieprawidłowa liczba miesięcy kredytu';
         } else {
             if ($role === 'admin') { // Obliczaj ratę tylko dla administratora
-                $rata = ($kwota * $oprocentowanie / 12) / (1 - pow(1 + $oprocentowanie / 12, -$miesiace));
+                if ($oprocentowanie_calc == 0) {
+                     if ($miesiace > 0) {
+                         $rata = $kwota_calc / $miesiace;
+                     } else {
+                         $rata = $kwota_calc;
+                     }
+                } else {
+                    $rata = ($kwota_calc * $oprocentowanie_calc / 12) / (1 - pow(1 + $oprocentowanie_calc / 12, -$miesiace));
+                }
                 $rata = round($rata, 2);
             } else {
                 $messages[] = 'Dostęp tylko dla administratora'; // Komunikat dla użytkownika
@@ -101,19 +114,19 @@ if (empty($messages)) {
 
 //Smarty
 
-
-
 // 1. Utwórz nowy obiekt Smarty
-$smarty = new Smarty();
+
+$smarty = new \Smarty\Smarty();
+//nowe Smarty 5
 
 // 2. Przypisz wartości zmiennych do szablonu
 $smarty->assign('kwota', $kwota);
 $smarty->assign('lata', $lata);
-$smarty->assign('oprocentowanie', $oprocentowanie);
+$smarty->assign('oprocentowanie', $oprocentowanie_display);
 $smarty->assign('messages', $messages);
 $smarty->assign('rata', $rata);
 $smarty->assign('app_url', _APP_URL);
-$smarty->assign('app_root', _APP_ROOT);
+$smarty->assign('template_url', _APP_URL.'/app/templates');
 $smarty->assign('hide_intro',$hide_intro);
 $smarty->assign('page_title','Kalkulator Kredytowy');
 $smarty->assign('page_description','Profesjonalne szablonowanie oparte na bibliotece Smarty');
