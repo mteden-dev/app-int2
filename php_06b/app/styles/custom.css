@@ -1,0 +1,112 @@
+/* Stylizacja suwaka */
+.slider {
+    width: 100%;
+    max-width: 600px;
+    background-color: #5052a0;
+    height: 10px;
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #8d82ca;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #8d82ca;
+    cursor: pointer;
+}
+
+/* Stylizacja formularza */
+.form-group {
+    margin-bottom: 1.5em;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5em;
+    color: #fff;
+}
+
+/* Stylizacja przycisku */
+.button-calc {
+    background-color: #5052a0 !important;
+    color: #fff !important;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button-calc:hover {
+    background-color: #6554c0 !important;
+    transform: translateY(-2px);
+}
+
+/* Komunikaty o błędach */
+.error-message {
+    margin: 20px;
+    padding: 10px 10px 10px 30px;
+    border-radius: 5px;
+    background-color: rgba(255, 100, 100, 0.6);
+    width: 100%;
+    max-width: 500px;
+    color: #fff;
+    list-style-position: inside;
+}
+
+/* Wynik obliczeń */
+.result-box {
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: rgba(80, 82, 160, 0.4);
+    border: 1px solid #5052a0;
+    width: 100%;
+    max-width: 500px;
+    color: #fff;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.result-value {
+    font-size: 2em;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(141, 130, 202, 0.8);
+    display: block;
+    margin-top: 0.5em;
+}
+
+/* Responsywność formularza */
+@media screen and (max-width: 980px) {
+    .form-container {
+        padding: 0 15px;
+    }
+}
+
+/* Wskaźnik wartości suwaka */
+.slider-value {
+    display: inline-block;
+    background-color: #8d82ca;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-left: 10px;
+}
