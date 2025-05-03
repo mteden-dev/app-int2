@@ -11,7 +11,7 @@ class CreditCalcCtrl {
 
 
     public function __construct() {
-        // Inicjalizacja właściwości
+        // Inicjalizacja
         $this->form = new CreditCalcForm();
         $this->result = new CreditCalcResult();
         $this->messages = new Messages();
@@ -69,39 +69,41 @@ class CreditCalcCtrl {
 
 
     public function process() {
-        // Konwersja parametrów na odpowiednie typy
-        $kwota_calc = floatval($this->form->kwota);
-        $lata_calc = intval($this->form->lata);
-        $oprocentowanie_calc = floatval($this->form->oprocentowanie) / 100;
-        $miesiace = $lata_calc * 12;
-        
-        // Po przejściu do kalkulatora ukryj intro
         $this->hide_intro = true;
         
-        // Sprawdzenie, czy liczba miesięcy nie jest ujemna
-        if ($miesiace < 0) {
-            $this->messages->addError('Nieprawidłowa liczba miesięcy kredytu');
-            return false;
-        }
-        
-        // Sprawdzenie roli - tylko admin może obliczać ratę
-        if ($this->role === 'admin') {
-            if ($oprocentowanie_calc == 0) {
-                if ($miesiace > 0) {
-                    $this->result->rata = $kwota_calc / $miesiace;
+        $this->getParams();
+
+        if (isset($_REQUEST['kwota'])) {
+            if ($this->validate()) {
+                $kwota_calc = floatval($this->form->kwota);
+                $lata_calc = intval($this->form->lata);
+                $oprocentowanie_calc = floatval($this->form->oprocentowanie) / 100;
+                $miesiace = $lata_calc * 12;
+
+                if ($miesiace < 0) {
+                    $this->messages->addError('Nieprawidłowa liczba miesięcy kredytu');
                 } else {
-                    $this->result->rata = $kwota_calc;
+                    // Rola - tylko admin
+                    if ($this->role === 'admin') {
+                        if ($oprocentowanie_calc == 0) {
+                            if ($miesiace > 0) {
+                                $this->result->rata = $kwota_calc / $miesiace;
+                            } else {
+                                $this->result->rata = $kwota_calc;
+                            }
+                        } else {
+                            $this->result->rata = ($kwota_calc * $oprocentowanie_calc / 12) / (1 - pow(1 + $oprocentowanie_calc / 12, -$miesiace));
+                        }
+                        $this->result->rata = round($this->result->rata, 2);
+                    } else {
+                        $this->messages->addError('Dostęp tylko dla administratora');
+                    }
                 }
-            } else {
-                $this->result->rata = ($kwota_calc * $oprocentowanie_calc / 12) / (1 - pow(1 + $oprocentowanie_calc / 12, -$miesiace));
+                
             }
-            $this->result->rata = round($this->result->rata, 2);
-        } else {
-            $this->messages->addError('Dostęp tylko dla administratora');
-            return false;
         }
-        
-        return true;
+
+        $this->generateView();
     }
 
 
@@ -117,6 +119,7 @@ class CreditCalcCtrl {
         
         // Przekazanie zmiennych do szablonu
         $smarty->assign('app_url', _APP_URL);
+        $smarty->assign('action_url', _ACTION_URL);
         $smarty->assign('app_root', $app_root);
         $smarty->assign('kwota', $this->form->kwota);
         $smarty->assign('lata', $this->form->lata);
@@ -135,18 +138,18 @@ class CreditCalcCtrl {
     }
     
 
-    public function run() {
-        // Pobierz parametry
-        $this->getParams();
+    // public function run() {
+    //     // Pobierz parametry
+    //     $this->getParams();
         
-        // Walidacja i wykonanie obliczeń tylko przy przesłanych danych
-        if (isset($_REQUEST['kwota'])) {
-            if ($this->validate()) {
-                $this->process();
-            }
-        }
+    //     // Walidacja i wykonanie obliczeń tylko przy przesłanych danych
+    //     if (isset($_REQUEST['kwota'])) {
+    //         if ($this->validate()) {
+    //             $this->process();
+    //         }
+    //     }
         
-        // Wygeneruj widok
-        $this->generateView();
-    }
+    //     // Wygeneruj widok
+    //     $this->generateView();
+    // }
 }

@@ -7,7 +7,8 @@
 
 {block name=content}
 <div class="form-container">
-    <form action="{$app_url}/app/calc.php" method="post">
+    <!-- Zmiana akcji formularza na użycie kontrolera głównego -->
+    <form action="{$action_url}calcCompute" method="post">
         <div class="form-group">
             <label for="id_kwota" class="form-label">Kwota kredytu (PLN): </label>
             <input id="id_kwota" type="text" name="kwota" value="{$kwota|default:''}" class="form-control" />
@@ -44,7 +45,6 @@
         <p>Miesięczna rata Twojego kredytu wynosi:</p>
         <span class="result-value">{$rata} PLN</span>
 
-        {* Dodatkowe informacje o kredycie *}
         <p style="margin-top: 20px; font-size: 0.8em;">
             Kwota kredytu: {$kwota} PLN<br>
             Okres kredytu: {$lata} {if $lata == 1}rok{elseif $lata < 5}lata{else}lat{/if}<br>
@@ -52,6 +52,11 @@
         </p>
     </div>
     {/if}
+    
+    <!-- Dodajemy link powrotu do strony głównej -->
+    <div class="form-group" style="margin-top: 30px;">
+        <a href="{$action_url}" class="button">Powrót do strony głównej</a>
+    </div>
 </div>
 
 <script>
@@ -62,5 +67,5 @@
 {/block}
 
 {block name=wyloguj}
-    <a href="{$app_root}/app/security/logout.php" class="button scrolly">Wyloguj</a>
+    <a href="{$action_url}logout" class="button scrolly">Wyloguj</a>
 {/block}

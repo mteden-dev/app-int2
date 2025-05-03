@@ -1,15 +1,15 @@
 <?php
-/* Smarty version 5.0.0, created on 2025-04-27 19:17:30
+/* Smarty version 5.0.0, created on 2025-05-03 15:30:13
   from 'file:main.html' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.0.0',
-  'unifunc' => 'content_680e82ca3d8841_06622712',
+  'unifunc' => 'content_681636852b0523_81646430',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '629528cf85f7d491b8b11216e6e0430d85501741' => 
+    '265bdb6b23e787395b89b551b9489f567683c154' => 
     array (
       0 => 'main.html',
       1 => 1745781445,
@@ -20,8 +20,8 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_680e82ca3d8841_06622712 (\Smarty\Template $_smarty_tpl) {
-$_smarty_current_dir = '/Users/przemyslawbanasz/Documents/Code/APP INT/app-int2/php_04/app/templates';
+function content_681636852b0523_81646430 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = '/Users/przemyslawbanasz/Documents/Code/APP INT/app-int2/php_05/app/templates';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
 ?>
 <!DOCTYPE HTML>
@@ -82,7 +82,7 @@ $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
                             <ul class="actions">
                                 <li><a href="#one" class="button scrolly">Przejdź do kalkulatora</a></li>
                                 <li><?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_632464693680e82ca3d64d6_97057516', 'wyloguj');
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1361721077681636852a5cd3_55354426', 'wyloguj');
 ?>
 </li>
                             </ul>
@@ -93,7 +93,7 @@ $_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_632464693680e
                     <section id="one" class="wrapper style2 spotlights">
                         <section>
                             <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1565709108680e82ca3d6f44_25544855', 'content');
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_377724982681636852a6864_37206792', 'content');
 ?>
 
                         </section>
@@ -107,7 +107,7 @@ $_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1565709108680
     <div class="inner">
         <ul class="menu">
             <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1727601143680e82ca3d7407_05395228', 'footer');
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_882956293681636852a6ce8_06108098', 'footer');
 ?>
 
         </ul>
@@ -155,30 +155,30 @@ $_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_1727601143680
     </body>
 </html><?php }
 /* {block 'wyloguj'} */
-class Block_632464693680e82ca3d64d6_97057516 extends \Smarty\Runtime\Block
+class Block_1361721077681636852a5cd3_55354426 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
-$_smarty_current_dir = '/Users/przemyslawbanasz/Documents/Code/APP INT/app-int2/php_04/app/templates';
+$_smarty_current_dir = '/Users/przemyslawbanasz/Documents/Code/APP INT/app-int2/php_05/app/templates';
 ?>
  wyloguj <?php
 }
 }
 /* {/block 'wyloguj'} */
 /* {block 'content'} */
-class Block_1565709108680e82ca3d6f44_25544855 extends \Smarty\Runtime\Block
+class Block_377724982681636852a6864_37206792 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
-$_smarty_current_dir = '/Users/przemyslawbanasz/Documents/Code/APP INT/app-int2/php_04/app/templates';
+$_smarty_current_dir = '/Users/przemyslawbanasz/Documents/Code/APP INT/app-int2/php_05/app/templates';
 ?>
  Domyślna treść zawartości .... <?php
 }
 }
 /* {/block 'content'} */
 /* {block 'footer'} */
-class Block_1727601143680e82ca3d7407_05395228 extends \Smarty\Runtime\Block
+class Block_882956293681636852a6ce8_06108098 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
-$_smarty_current_dir = '/Users/przemyslawbanasz/Documents/Code/APP INT/app-int2/php_04/app/templates';
+$_smarty_current_dir = '/Users/przemyslawbanasz/Documents/Code/APP INT/app-int2/php_05/app/templates';
 ?>
  Domyślna treść stopki .... <?php
 }

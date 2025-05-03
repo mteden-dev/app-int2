@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.0.0, created on 2025-04-27 19:12:18
+/* Smarty version 5.0.0, created on 2025-05-03 15:42:28
   from 'file:calc.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.0.0',
-  'unifunc' => 'content_680e8192820283_83522429',
+  'unifunc' => 'content_68163964aa9385_45458550',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'c5a3dd774e9f6a80a106aabf259709fe8b70b33d' => 
+    'a5645b45274498ac1b1b53c953c2c68305d77597' => 
     array (
       0 => 'calc.tpl',
-      1 => 1745781085,
+      1 => 1746282326,
       2 => 'file',
     ),
   ),
@@ -20,31 +20,31 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_680e8192820283_83522429 (\Smarty\Template $_smarty_tpl) {
-$_smarty_current_dir = '/Users/przemyslawbanasz/Documents/Code/APP INT/app-int2/php_04/app/templates';
+function content_68163964aa9385_45458550 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = '/Users/przemyslawbanasz/Documents/Code/APP INT/app-int2/php_05/app/templates';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_924723366680e819281bd29_66322205', 'footer');
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_183347896168163964a90f97_20209856', 'footer');
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_769611945680e819281c5e3_81480031', 'content');
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_132421202068163964a945c4_04709773', 'content');
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_866133473680e819281fde8_69937893', 'wyloguj');
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_178128071568163964aa8ca6_28643625', 'wyloguj');
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, "main.html", $_smarty_current_dir);
 }
 /* {block 'footer'} */
-class Block_924723366680e819281bd29_66322205 extends \Smarty\Runtime\Block
+class Block_183347896168163964a90f97_20209856 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
-$_smarty_current_dir = '/Users/przemyslawbanasz/Documents/Code/APP INT/app-int2/php_04/app/templates';
+$_smarty_current_dir = '/Users/przemyslawbanasz/Documents/Code/APP INT/app-int2/php_05/app/templates';
 ?>
 
 <li>&copy; Kalkulator Kredytowy 2024. Projekt na zaliczenie PSS.</li>
@@ -54,15 +54,16 @@ $_smarty_current_dir = '/Users/przemyslawbanasz/Documents/Code/APP INT/app-int2/
 }
 /* {/block 'footer'} */
 /* {block 'content'} */
-class Block_769611945680e819281c5e3_81480031 extends \Smarty\Runtime\Block
+class Block_132421202068163964a945c4_04709773 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
-$_smarty_current_dir = '/Users/przemyslawbanasz/Documents/Code/APP INT/app-int2/php_04/app/templates';
+$_smarty_current_dir = '/Users/przemyslawbanasz/Documents/Code/APP INT/app-int2/php_05/app/templates';
 ?>
 
 <div class="form-container">
-    <form action="<?php echo $_smarty_tpl->getValue('app_url');?>
-/app/calc.php" method="post">
+    <!-- Zmiana akcji formularza na użycie kontrolera głównego -->
+    <form action="<?php echo $_smarty_tpl->getValue('action_url');?>
+calcCompute" method="post">
         <div class="form-group">
             <label for="id_kwota" class="form-label">Kwota kredytu (PLN): </label>
             <input id="id_kwota" type="text" name="kwota" value="<?php echo (($tmp = $_smarty_tpl->getValue('kwota') ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
@@ -112,7 +113,7 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
         <span class="result-value"><?php echo $_smarty_tpl->getValue('rata');?>
  PLN</span>
 
-                <p style="margin-top: 20px; font-size: 0.8em;">
+        <p style="margin-top: 20px; font-size: 0.8em;">
             Kwota kredytu: <?php echo $_smarty_tpl->getValue('kwota');?>
  PLN<br>
             Okres kredytu: <?php echo $_smarty_tpl->getValue('lata');?>
@@ -122,6 +123,12 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
         </p>
     </div>
     <?php }?>
+    
+    <!-- Dodajemy link powrotu do strony głównej -->
+    <div class="form-group" style="margin-top: 30px;">
+        <a href="<?php echo $_smarty_tpl->getValue('action_url');?>
+" class="button">Powrót do strony głównej</a>
+    </div>
 </div>
 
 <?php echo '<script'; ?>
@@ -136,14 +143,14 @@ $_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
 }
 /* {/block 'content'} */
 /* {block 'wyloguj'} */
-class Block_866133473680e819281fde8_69937893 extends \Smarty\Runtime\Block
+class Block_178128071568163964aa8ca6_28643625 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
-$_smarty_current_dir = '/Users/przemyslawbanasz/Documents/Code/APP INT/app-int2/php_04/app/templates';
+$_smarty_current_dir = '/Users/przemyslawbanasz/Documents/Code/APP INT/app-int2/php_05/app/templates';
 ?>
 
-    <a href="<?php echo $_smarty_tpl->getValue('app_root');?>
-/app/security/logout.php" class="button scrolly">Wyloguj</a>
+    <a href="<?php echo $_smarty_tpl->getValue('action_url');?>
+logout" class="button scrolly">Wyloguj</a>
 <?php
 }
 }

@@ -56,7 +56,8 @@ if (!validateLogin($form,$messages)) {
 	//ok przekieruj lub "forward" na stronę główną
 	
 	//redirect - przeglądarka dostanie ten adres do "przejścia" na niego (wysłania kolejnego żądania)
-	header("Location: "._APP_URL);
+	// header("Location: "._APP_URL);
+	header("Location: "._ACTION_URL);
 	
 	//"forward"
 	//include _ROOT_PATH.'/index.php';

@@ -7,6 +7,8 @@ session_destroy();
 
 // 2. przekieruj lub "forward" na stronę główną
 //redirect
-header("Location: "._APP_URL);
+// header("Location: "._APP_URL);
+header("Location: "._ACTION_URL);
 //"forward"
 //include _ROOT_PATH.'/index.php';
+?>
