@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>{$page_title|default:"Tytuł domyślny"}</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="{$app_url}/app/views/templates/assets/css/main.css" />
+        <link rel="stylesheet" href="{$app_url}/app/styles/custom.css" />
+        <noscript><link rel="stylesheet" href="{$app_url}/app/views/templates/assets/css/noscript.css" /></noscript>
+        <style>
+            .slider {
+                width: 600px;
+                background-color: #5052a0;
+            }
+            .debug-panel {
+                position: fixed;
+                top: 0;
+                left: 0;
+                background: #f8f9fa;
+                border: 1px solid #dee2e6;
+                padding: 10px;
+                z-index: 9999;
+                color: #000;
+            }
+        </style>
+    </head>
+    <body class="is-preload">
+
+
+        <!-- Sidebar -->
+            <section id="sidebar">
+                <div class="inner">
+                    <nav>
+                        <ul>
+                            <li><a href="#intro">Witaj</a></li>
+                            <li><a href="#one">Kalkulator</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </section>
+
+        <!-- Wrapper -->
+            <div id="wrapper">
+
+                <!-- Intro -->
+                    <section id="intro" class="wrapper style1 fullscreen fade-up">
+                        <div class="inner">
+                            <h1>{$page_title|default:"Tytuł domyślny"}</h1>
+                            <p>{$page_description|default:"Opis domyślny"}</p>
+                            <ul class="actions">
+                                <li><a href="#one" class="button scrolly">Przejdź do kalkulatora</a></li>
+                                <li>{block name=wyloguj} wyloguj {/block}</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                <!-- One -->
+                    <section id="one" class="wrapper style2 spotlights">
+                        <section>
+                            {block name=content} Domyślna treść zawartości .... {/block}
+                        </section>
+
+
+
+            </div>		
+
+        <!-- Footer -->
+<footer id="footer" class="wrapper style1-alt">
+    <div class="inner">
+        <ul class="menu">
+            {block name=footer} Domyślna treść stopki .... {/block}
+        </ul>
+    </div>
+</footer>
+
+        <!-- Scripts -->
+        <script src="{$app_url}/app/views/templates/assets/js/jquery.min.js"></script>
+        <script src="{$app_url}/app/views/templates/assets/js/jquery.scrollex.min.js"></script>
+        <script src="{$app_url}/app/views/templates/assets/js/jquery.scrolly.min.js"></script>
+        <script src="{$app_url}/app/views/templates/assets/js/browser.min.js"></script>
+        <script src="{$app_url}/app/views/templates/assets/js/breakpoints.min.js"></script>
+        <script src="{$app_url}/app/views/templates/assets/js/util.js"></script>
+        <script src="{$app_url}/app/views/templates/assets/js/main.js"></script>
+        {if $hide_intro }
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                location.hash = "#one";
+            });
+        </script>
+        {/if}
+    </body>
+</html>
